@@ -55,4 +55,12 @@ class MovieProvider extends ChangeNotifier {
     notifyListeners();
     return upComingMovie;
   }
+
+  Future<MovieModel> getSearchedMovies(String str) async {
+    var response = await http.get(Uri.parse(
+        'https://api.themoviedb.org/3/search/movie?api_key=aa2d6ab45e973862944257270d91c01e&language=en-US&page=1&query=$str&include_adult=false'));
+    var jsonData = jsonDecode(response.body);
+    var serachedResult = MovieModel.fromMap(jsonData);
+    return serachedResult;
+  }
 }

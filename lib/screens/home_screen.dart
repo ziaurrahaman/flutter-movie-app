@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
+import 'package:flutter_movie_app/screens/search_page.dart';
 import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Flutter Movie App'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SearchPage()));
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ))
+          ],
         ),
         body: Container(
           child: SingleChildScrollView(
