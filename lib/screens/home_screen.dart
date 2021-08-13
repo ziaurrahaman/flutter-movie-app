@@ -9,12 +9,63 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final trendingMovies = context.watch<MovieProvider>().trendingMovie;
-    final popularMovies = context.watch<MovieProvider>().popularMovie;
-    final topRatedMovies = context.watch<MovieProvider>().topRatedMovie;
-    final upComingMovies = context.watch<MovieProvider>().upComingMovie;
+    final trendingMovies = context.watch<MovieProvider>().trendingMovies;
+    final popularMovies = context.watch<MovieProvider>().popularMovies;
+    final topRatedMovies = context.watch<MovieProvider>().topRatedMovies;
+    final upComingMovies = context.watch<MovieProvider>().upComingMovies;
 
     return Scaffold(
+        drawer: Drawer(
+            child: ListView(
+          children: [
+            DrawerHeader(
+              child: Text(
+                'Flutter Movie App',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32),
+              ),
+              decoration: BoxDecoration(color: Colors.blue),
+            ),
+            ListTile(
+              title: Text(
+                'Trending Movies',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Popular Movies',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Top Rated Movies',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Upcoming Movies',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16),
+              ),
+            ),
+          ],
+        )),
         appBar: AppBar(
           title: Text('Flutter Movie App'),
           actions: [
@@ -47,9 +98,9 @@ class HomeScreen extends StatelessWidget {
                   height: 260,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
-                      trendingMovie: trendingMovies.movies[index],
+                      trendingMovie: trendingMovies[index],
                     ),
-                    itemCount: trendingMovies.movies.length,
+                    itemCount: trendingMovies.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                   ),
@@ -65,9 +116,9 @@ class HomeScreen extends StatelessWidget {
                   height: 260,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
-                      trendingMovie: popularMovies.movies[index],
+                      trendingMovie: popularMovies[index],
                     ),
-                    itemCount: popularMovies.movies.length,
+                    itemCount: popularMovies.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                   ),
@@ -83,9 +134,9 @@ class HomeScreen extends StatelessWidget {
                   height: 260,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
-                      trendingMovie: topRatedMovies.movies[index],
+                      trendingMovie: topRatedMovies[index],
                     ),
-                    itemCount: topRatedMovies.movies.length,
+                    itemCount: topRatedMovies.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                   ),
@@ -101,9 +152,9 @@ class HomeScreen extends StatelessWidget {
                   height: 260,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
-                      trendingMovie: upComingMovies.movies[index],
+                      trendingMovie: upComingMovies[index],
                     ),
-                    itemCount: upComingMovies.movies.length,
+                    itemCount: upComingMovies.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                   ),

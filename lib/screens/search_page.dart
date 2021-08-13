@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
+import 'package:flutter_movie_app/providers/movie_provider.dart';
 import 'package:flutter_movie_app/widgets/movie_details_screen.dart';
 import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 // import 'package:flutter_movie_app/providers/movie_provider.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -16,28 +18,29 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   TextEditingController _searchTextEdittingController = TextEditingController();
   String _searchText = '';
-  List<MovieResultModel> searchedMovies = [];
+  // List<MovieResultModel> searchedMovies = [];
 
-  Future<List<MovieResultModel>> getSearchedMovies(String str) async {
-    var response = await http.get(Uri.parse(
-        'https://api.themoviedb.org/3/search/movie?api_key=aa2d6ab45e973862944257270d91c01e&language=en-US&page=1&query=$str&include_adult=false'));
-    var jsonData = jsonDecode(response.body);
-    var serachedResult = MovieModel.fromMap(jsonData);
-    if (str == '') {
-      setState(() {
-        searchedMovies = [];
-      });
-    }
+  // Future<List<MovieResultModel>> getSearchedMovies(String str) async {
+  //   var response = await http.get(Uri.parse(
+  //       'https://api.themoviedb.org/3/search/movie?api_key=aa2d6ab45e973862944257270d91c01e&language=en-US&page=1&query=$str&include_adult=false'));
+  //   var jsonData = jsonDecode(response.body);
+  //   var serachedResult = MovieModel.fromMap(jsonData);
+  //   if (str == '') {
+  //     setState(() {
+  //       searchedMovies = [];
+  //     });
+  //   }
 
-    setState(() {
-      searchedMovies = serachedResult.movies;
-    });
+  //   setState(() {
+  //     searchedMovies = serachedResult.movies;
+  //   });
 
-    return serachedResult.movies;
-  }
+  //   return serachedResult.movies;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final seachedMovies = context.watch<MovieProvider>().searchedMovies;
     return Scaffold(
       appBar: AppBar(
           title: TextFormField(
@@ -66,10 +69,10 @@ class _SearchPageState extends State<SearchPage> {
                 _searchTextEdittingController.clear();
               },
             )),
-        onChanged: getSearchedMovies,
-        onFieldSubmitted: getSearchedMovies,
+        onChanged: context.read<MovieProvider>().getSearchedMovies,
+        onFieldSubmitted: context.read<MovieProvider>().getSearchedMovies,
       )),
-      body: searchedMovies.length == 0
+      body: seachedMovies.length == 0
           ? Center(
               child: CircularProgressIndicator(
                 color: Colors.grey,
@@ -83,9 +86,9 @@ class _SearchPageState extends State<SearchPage> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 0),
               itemBuilder: (context, index) => GridItem(
-                    searchedMovies: searchedMovies[index],
+                    searchedMovies: seachedMovies[index],
                   ),
-              itemCount: searchedMovies.length),
+              itemCount: seachedMovies.length),
     );
   }
 }
