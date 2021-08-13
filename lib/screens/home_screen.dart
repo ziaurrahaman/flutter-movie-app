@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
+import 'package:flutter_movie_app/screens/popularTrendingTopRatedOrUpcomingMovies.dart';
 import 'package:flutter_movie_app/screens/search_page.dart';
 import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,13 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16),
               ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryScreen(categoryName: 'Trending Movies')));
+                // Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: Text(
@@ -45,6 +53,13 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16),
               ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryScreen(categoryName: 'Popular Movies')));
+                // Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: Text(
@@ -54,6 +69,13 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16),
               ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryScreen(categoryName: 'Top Rated Movies')));
+                // Navigator.of(context).pop();
+              },
             ),
             ListTile(
               title: Text(
@@ -63,6 +85,13 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16),
               ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryScreen(categoryName: 'Upcoming Movies')));
+                // Navigator.of(context).pop();
+              },
             ),
           ],
         )),
