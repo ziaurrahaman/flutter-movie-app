@@ -36,7 +36,7 @@ class MovieResultModel {
     imagePath = m['poster_path'] ?? '';
     isAdult = m['adult'] ?? false;
     overview = m['overview'];
-    releaseDate = m['release_date'] ?? '';
+    releaseDate = m['release_date'] ?? m['first_air_date'];
     id = m['id'];
     originalTitle = m['original_title'] ?? '';
     originalLanguage = m['original_language'];

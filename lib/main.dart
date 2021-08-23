@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
 import 'package:flutter_movie_app/screens/home_screen.dart';
+import 'package:flutter_movie_app/utils/app_theme.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        theme: AppTheme.theme,
         home: HomeScreen(),
       ),
     );

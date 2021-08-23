@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   http: ^0.13.3  
   provider: ^5.0.0  
+  google_fonts: ^2.1.0
+  intl: ^0.17.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,16 +65,19 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Raleway
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
+  #       - asset: fonts/Raleway-Regular.ttf
+  #       # - asset: fonts/Schyler-Italic.ttf
+  #       #   style: italic
+  #   - family: RobotoCondensed
   #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  #       - asset: fonts/RobotoCondensed-Regular.ttf
+
+  #   - family: Lato
+  #     fonts:
+  #       - asset: fonts/Lato-Regular.ttf
+       
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
