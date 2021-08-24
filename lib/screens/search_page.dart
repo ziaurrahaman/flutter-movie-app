@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
 import 'package:flutter_movie_app/widgets/grid_item.dart';
-import 'package:flutter_movie_app/widgets/movie_details_screen.dart';
+import 'package:flutter_movie_app/screens/movie_details_screen.dart';
 import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 // import 'package:flutter_movie_app/providers/movie_provider.dart';
 // import 'dart:convert';

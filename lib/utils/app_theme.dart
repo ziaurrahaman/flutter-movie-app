@@ -5,5 +5,6 @@ abstract class AppTheme {
     primaryColor: Color(
       0xFF171821,
     ),
+    accentColor: Color(0xFF383942),
   );
 }

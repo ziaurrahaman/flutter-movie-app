@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
-import 'package:flutter_movie_app/widgets/movie_details_screen.dart';
+import 'package:flutter_movie_app/screens/movie_details_screen.dart';
 
 class GridItem extends StatelessWidget {
   // const GridItem({ Key? key }) : super(key: key);
@@ -16,8 +16,7 @@ class GridItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    MovieDetailsScreen(trendingMovie: movies)));
+                builder: (context) => MovieDetailsScreen(movies: movies)));
       },
       child: Container(
         // width: 180,

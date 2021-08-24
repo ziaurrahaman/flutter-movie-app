@@ -11,6 +11,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    // print('measure ${deviceHeight * 0.3433}');
     final trendingMovies = context.watch<MovieProvider>().trendingMovies;
     final popularMovies = context.watch<MovieProvider>().popularMovies;
     final topRatedMovies = context.watch<MovieProvider>().topRatedMovies;
@@ -142,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: 260,
+                  height: deviceHeight * 0.3433,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: trendingMovies[index],
@@ -163,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 260,
+                  height: deviceHeight * 0.3433,
                   margin: EdgeInsets.only(left: 8),
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
@@ -186,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: 260,
+                  height: deviceHeight * 0.3433,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: topRatedMovies[index],
@@ -208,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: 260,
+                  height: deviceHeight * 0.3433,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: upComingMovies[index],

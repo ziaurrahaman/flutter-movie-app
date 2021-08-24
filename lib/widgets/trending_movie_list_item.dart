@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
-import 'package:flutter_movie_app/widgets/movie_details_screen.dart';
+import 'package:flutter_movie_app/screens/movie_details_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -13,17 +13,21 @@ class MovieListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(trendingMovie.releaseDate);
-    var convertedRelaease = DateTime.parse(trendingMovie.releaseDate);
-    var con = DateFormat('MMMM-dd-yyyy').format(convertedRelaease);
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    DateTime releaseDateTime = DateTime.parse(trendingMovie.releaseDate);
+    String forMatedDateTime =
+        DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
+    // print('h ${deviceHeight * 0.011}');
 
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    MovieDetailsScreen(trendingMovie: trendingMovie)));
+                builder: (context) => MovieDetailsScreen(
+                      movies: trendingMovie,
+                    )));
       },
       child: Container(
         // height: ,
@@ -36,16 +40,18 @@ class MovieListItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Image.network(
                 'http://image.tmdb.org/t/p/w500' + trendingMovie.imagePath,
-                height: 190,
-                width: 160,
+                // height: 190,
+                // width: 160,
+                height: deviceHeight * 0.25,
+                width: deviceWidth * 0.41,
                 fit: BoxFit.cover,
               ),
             ),
             SizedBox(
-              height: 8,
+              height: deviceHeight * 0.011,
             ),
             Container(
-              width: 160,
+              width: deviceWidth * 0.41,
               child: Text(
                 trendingMovie.title,
                 overflow: TextOverflow.ellipsis,
@@ -56,10 +62,10 @@ class MovieListItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 8,
+              height: deviceHeight * 0.011,
             ),
             Text(
-              (trendingMovie.releaseDate == '') ? '' : con,
+              (trendingMovie.releaseDate == '') ? '' : forMatedDateTime,
               style: GoogleFonts.openSans(color: Color(0xFF383942)),
             )
           ],
