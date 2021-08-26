@@ -53,8 +53,10 @@ class _SearchPageState extends State<SearchPage> {
             hintStyle: TextStyle(
               color: Colors.white54,
             ),
-            enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white)),
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            // enabledBorder: UnderlineInputBorder(
+            //     borderSide: BorderSide(color: Colors.white)),
             // focusedBorder: UnderlineInputBorder(
             //     borderSide: BorderSide(color: Colors.white))
             // prefixIcon: Icon(
@@ -73,23 +75,27 @@ class _SearchPageState extends State<SearchPage> {
         onChanged: context.read<MovieProvider>().getSearchedMovies,
         onFieldSubmitted: context.read<MovieProvider>().getSearchedMovies,
       )),
+      backgroundColor: Theme.of(context).primaryColor,
       body: seachedMovies.length == 0
           ? Center(
               child: CircularProgressIndicator(
                 color: Colors.grey,
               ),
             )
-          : GridView.builder(
-              // shrinkWrap: true,
+          : Container(
+              margin: EdgeInsets.only(left: 8, right: 8, top: 24, bottom: 8),
+              child: GridView.builder(
+                  // shrinkWrap: true,
 
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 180 / 230,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 0),
-              itemBuilder: (context, index) => GridItem(
-                    movies: seachedMovies[index],
-                  ),
-              itemCount: seachedMovies.length),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 180 / 268,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 0),
+                  itemBuilder: (context, index) => GridItem(
+                        movies: seachedMovies[index],
+                      ),
+                  itemCount: seachedMovies.length),
+            ),
     );
   }
 }

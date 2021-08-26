@@ -33,10 +33,11 @@ class MovieResultModel {
   late num voteAverage;
 
   MovieResultModel.fromMap(Map m) {
-    imagePath = m['poster_path'] ?? '';
+    imagePath = m['poster_path'] ??
+        'https://media.comicbook.com/files/img/default-movie.png';
     isAdult = m['adult'] ?? false;
     overview = m['overview'];
-    releaseDate = m['release_date'] ?? m['first_air_date'];
+    releaseDate = m['release_date'] ?? m['first_air_date'] ?? '2014-5-6';
     id = m['id'];
     originalTitle = m['original_title'] ?? '';
     originalLanguage = m['original_language'];
