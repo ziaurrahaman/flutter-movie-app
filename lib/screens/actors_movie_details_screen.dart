@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/movie_details_model.dart';
+import 'package:flutter_movie_app/models/movies_of_a_actor_model.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
 import 'package:flutter_movie_app/screens/cast_details_screen.dart';
@@ -7,15 +8,16 @@ import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MovieDetailsScreen extends StatefulWidget {
-  late final MovieResultModel movies;
-  MovieDetailsScreen({Key? key, required this.movies}) : super(key: key);
+class ActorMovieDetailsScreen extends StatefulWidget {
+  late final ActorsMovieModel movies;
+  ActorMovieDetailsScreen({Key? key, required this.movies}) : super(key: key);
 
   @override
-  _MovieDetailsScreenState createState() => _MovieDetailsScreenState();
+  _ActorMovieDetailsScreenState createState() =>
+      _ActorMovieDetailsScreenState();
 }
 
-class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
+class _ActorMovieDetailsScreenState extends State<ActorMovieDetailsScreen> {
   // int itemCount = 5;
   // String rating = '';
   // MaterialColor color = Colors.grey;

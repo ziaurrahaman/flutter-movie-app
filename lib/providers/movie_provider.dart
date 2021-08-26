@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_movie_app/models/cast_details_model.dart';
 import 'package:flutter_movie_app/models/cast_model.dart';
 import 'package:flutter_movie_app/models/movie_details_model.dart';
+import 'package:flutter_movie_app/models/movies_of_a_actor_model.dart';
 import 'package:flutter_movie_app/models/trending_movie.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -14,8 +16,10 @@ class MovieProvider extends ChangeNotifier {
   List<MovieResultModel> upComingMovies = [];
   List<MovieResultModel> searchedMovies = [];
   List<MovieResultModel> recommendedMovies = [];
+  List<ActorsMovieModel> moviesOfAnActor = [];
   late CreditModel creditModel;
   late MovieDetailsModel movieDetails;
+  late CastDetailsModel actorDetails;
   MovieProvider() {
     getTrendingMovies();
     getPopularMovies();
@@ -100,6 +104,26 @@ class MovieProvider extends ChangeNotifier {
     var jsonData = jsonDecode(response.body);
     MovieModel movieModel = MovieModel.fromMap(jsonData);
     recommendedMovies = movieModel.movies;
+    notifyListeners();
+  }
+
+  getCastDetails(int castId) async {
+    var response = await http.get(Uri.parse(
+        'https://api.themoviedb.org/3/person/$castId?api_key=aa2d6ab45e973862944257270d91c01e&language=en-US'));
+    var jsonData = jsonDecode(response.body);
+    CastDetailsModel castDetails = CastDetailsModel.fromMap(jsonData);
+    actorDetails = castDetails;
+    notifyListeners();
+  }
+
+  getMoviesOfAnActor(int actorId) async {
+    var response = await http.get(Uri.parse(
+        'https://api.themoviedb.org/3/person/$actorId/movie_credits?api_key=aa2d6ab45e973862944257270d91c01e&language=en-US'));
+    var jsonData = jsonDecode(response.body);
+    MoviesOfAActorModel moviesOfAnActorModel =
+        MoviesOfAActorModel.fromMap(jsonData);
+
+    moviesOfAnActor = moviesOfAnActorModel.moviesOfAActor;
     notifyListeners();
   }
 }
