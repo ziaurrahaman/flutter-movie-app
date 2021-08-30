@@ -6,6 +6,7 @@ import 'package:flutter_movie_app/screens/cast_details_screen.dart';
 import 'package:flutter_movie_app/widgets/trending_movie_list_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:readmore/readmore.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   late final MovieResultModel movies;
@@ -73,7 +74,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                 return (snapshot.connectionState == ConnectionState.waiting)
                     ? Center(
                         child: CircularProgressIndicator(
-                          color: Colors.grey,
+                          color: Theme.of(context).accentColor,
                         ),
                       )
                     : CustomScrollView(
@@ -202,13 +203,19 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 16.0),
-                                child: Text(
-                                    context
-                                        .read<MovieProvider>()
-                                        .movieDetails
-                                        .overView,
-                                    style: GoogleFonts.openSans(
-                                        color: Colors.white)),
+                                child: ReadMoreText(
+                                  context
+                                      .read<MovieProvider>()
+                                      .movieDetails
+                                      .overView,
+                                  style:
+                                      GoogleFonts.openSans(color: Colors.white),
+                                  trimLines: 2,
+                                  trimCollapsedText: 'See More',
+                                  trimExpandedText: 'Seee Less',
+                                  lessStyle: TextStyle(color: Colors.red),
+                                  moreStyle: TextStyle(color: Colors.red),
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(top: 24, left: 16),
@@ -235,13 +242,14 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                         : Container(
                                             margin: EdgeInsets.only(
                                                 top: 24, left: 8),
-                                            height: 145,
+                                            height: deviceHeight * 0.1925,
                                             child: ListView.builder(
                                               shrinkWrap: true,
                                               scrollDirection: Axis.horizontal,
                                               itemBuilder: (context, index) =>
                                                   Container(
-                                                margin: EdgeInsets.all(8),
+                                                margin: EdgeInsets.all(
+                                                    deviceHeight * 0.011),
                                                 child: Column(
                                                   children: [
                                                     GestureDetector(
@@ -271,8 +279,12 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                                                 'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png')
                                                             ? Image.network(
                                                                 'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png',
-                                                                height: 100,
-                                                                width: 80,
+                                                                height:
+                                                                    deviceHeight *
+                                                                        0.132,
+                                                                width:
+                                                                    deviceHeight *
+                                                                        0.106,
                                                                 fit: BoxFit
                                                                     .cover)
                                                             : Image.network(
@@ -286,18 +298,24 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                                                         .imagePath,
                                                                 // height: 190,
                                                                 // width: 160,
-                                                                height: 100,
-                                                                width: 80,
+                                                                height:
+                                                                    deviceHeight *
+                                                                        0.132,
+                                                                width:
+                                                                    deviceHeight *
+                                                                        0.106,
                                                                 fit: BoxFit
                                                                     .cover,
                                                               ),
                                                       ),
                                                     ),
                                                     SizedBox(
-                                                      height: 8,
+                                                      height:
+                                                          deviceHeight * 0.011,
                                                     ),
                                                     Container(
-                                                      width: 80,
+                                                      width:
+                                                          deviceHeight * 0.106,
                                                       child: Text(
                                                         context
                                                             .read<
@@ -311,8 +329,11 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                                             TextAlign.start,
                                                         style: GoogleFonts
                                                             .openSans(
-                                                          color: Colors.white,
-                                                        ),
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize:
+                                                                    deviceHeight *
+                                                                        0.0185),
                                                       ),
                                                     ),
                                                   ],
@@ -350,7 +371,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                         : Container(
                                             margin: EdgeInsets.only(
                                                 left: 8, top: 24),
-                                            height: deviceHeight * 0.3433,
+                                            height: deviceHeight * 0.3533,
                                             child: ListView.builder(
                                               itemBuilder: (context, index) =>
                                                   MovieListItem(

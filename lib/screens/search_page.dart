@@ -42,6 +42,8 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final seachedMovies = context.watch<MovieProvider>().searchedMovies;
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
           title: TextFormField(
@@ -88,7 +90,8 @@ class _SearchPageState extends State<SearchPage> {
                   // shrinkWrap: true,
 
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 180 / 268,
+                      childAspectRatio: (deviceWidth * 0.458).ceil() /
+                          (deviceHeight * 0.350).ceil(),
                       crossAxisCount: 2,
                       mainAxisSpacing: 0),
                   itemBuilder: (context, index) => GridItem(

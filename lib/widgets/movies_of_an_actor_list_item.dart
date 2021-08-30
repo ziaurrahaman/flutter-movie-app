@@ -18,9 +18,15 @@ class MoviesOfAnActorListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    DateTime releaseDateTime = DateTime.parse(actorsMovieModel.releaseDate);
-    String forMatedDateTime =
-        DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
+    String forMatedDateTime;
+    if (actorsMovieModel.releaseDate == "") {
+      DateTime releaseDateTime = DateTime.parse('1993-09-01');
+      forMatedDateTime = DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
+    } else {
+      DateTime releaseDateTime = DateTime.parse(actorsMovieModel.releaseDate);
+      forMatedDateTime = DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
+    }
+
     // print('h ${deviceHeight * 0.011}');
 
     return GestureDetector(

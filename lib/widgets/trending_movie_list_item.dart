@@ -18,7 +18,7 @@ class MovieListItem extends StatelessWidget {
     DateTime releaseDateTime = DateTime.parse(trendingMovie.releaseDate);
     String forMatedDateTime =
         DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
-    // print('h ${deviceHeight * 0.011}');
+    print('h ${deviceHeight * 0.358}');
 
     return GestureDetector(
       onTap: () {
@@ -31,7 +31,7 @@ class MovieListItem extends StatelessWidget {
       },
       child: Container(
         // height: ,
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.all(deviceHeight * 0.011),
 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,8 +57,7 @@ class MovieListItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
                 style: GoogleFonts.openSans(
-                  color: Colors.white,
-                ),
+                    color: Colors.white, fontSize: deviceHeight * 0.0185),
               ),
             ),
             SizedBox(
@@ -66,7 +65,8 @@ class MovieListItem extends StatelessWidget {
             ),
             Text(
               (trendingMovie.releaseDate == '') ? '' : forMatedDateTime,
-              style: GoogleFonts.openSans(color: Color(0xFF383942)),
+              style: GoogleFonts.openSans(
+                  color: Color(0xFF383942), fontSize: deviceHeight * 0.0185),
             )
           ],
         ),

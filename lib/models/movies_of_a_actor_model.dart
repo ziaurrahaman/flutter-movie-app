@@ -28,7 +28,7 @@ class ActorsMovieModel {
         'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png';
     isAdult = m['adult'];
     overview = m['overview'];
-    releaseDate = m['release_date'] ?? '20-4-2010';
+    releaseDate = m['release_date'] ?? '1994-12-16';
     id = m['id'];
     originalTitle = m['original_title'];
     originalLanguage = m['original_language'];

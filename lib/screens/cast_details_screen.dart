@@ -49,6 +49,7 @@ class CastDetailsScreen extends StatelessWidget {
                 : SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(16.0),
@@ -62,8 +63,8 @@ class CastDetailsScreen extends StatelessWidget {
                                         'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png')
                                     ? Image.network(
                                         'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png',
-                                        height: 240,
-                                        width: 140,
+                                        height: deviceHeight * 0.316,
+                                        width: deviceHeight * 0.184,
                                         fit: BoxFit.cover,
                                       )
                                     : Image.network(
@@ -72,8 +73,8 @@ class CastDetailsScreen extends StatelessWidget {
                                                 .read<MovieProvider>()
                                                 .actorDetails
                                                 .profileImage,
-                                        height: 240,
-                                        width: 140,
+                                        height: deviceHeight * 0.316,
+                                        width: deviceHeight * 0.184,
                                         fit: BoxFit.cover,
                                       ),
                               ),
@@ -108,7 +109,7 @@ class CastDetailsScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           RatingBarIndicator(
-                                            itemSize: 20,
+                                            itemSize: deviceWidth * 0.051,
                                             unratedColor:
                                                 Theme.of(context).accentColor,
                                             itemCount: 5,
@@ -131,7 +132,7 @@ class CastDetailsScreen extends StatelessWidget {
                                                 .toString(),
                                             style: TextStyle(
                                                 color: Colors.amber,
-                                                fontSize: 14),
+                                                fontSize: deviceWidth * 0.0358),
                                           )
                                         ],
                                       ),
@@ -236,7 +237,7 @@ class CastDetailsScreen extends StatelessWidget {
                           // height: 160,
                           child: ReadMoreText(
                             castDetailsProvider.actorDetails.biography,
-                            trimLines: 6,
+                            trimLines: 4,
                             trimMode: TrimMode.Line,
                             trimCollapsedText: 'Show more',
                             trimExpandedText: ' show less',
@@ -272,7 +273,7 @@ class CastDetailsScreen extends StatelessWidget {
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 24, left: 16),
-                          child: Text('Best Movies',
+                          child: Text('Movies',
                               style: GoogleFonts.raleway(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -293,7 +294,7 @@ class CastDetailsScreen extends StatelessWidget {
                                     ))
                                   : Container(
                                       margin: EdgeInsets.only(left: 8, top: 24),
-                                      height: deviceHeight * 0.3433,
+                                      height: deviceHeight * 0.3533,
                                       child: ListView.builder(
                                         itemBuilder: (context, index) =>
                                             MoviesOfAnActorListItem(

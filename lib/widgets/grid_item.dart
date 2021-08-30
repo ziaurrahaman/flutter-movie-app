@@ -13,6 +13,8 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
     DateTime releaseDateTime = DateTime.parse(movies.releaseDate);
     String forMatedDateTime =
         DateFormat('MMMM-dd-yyyy').format(releaseDateTime);
@@ -26,7 +28,7 @@ class GridItem extends StatelessWidget {
       child: Container(
         // width: 180,
         // height: ,
-        padding: EdgeInsets.all(8),
+        // padding: EdgeInsets.all(deviceHeight * 0.4165),
 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,22 +39,22 @@ class GridItem extends StatelessWidget {
                       'https://media.comicbook.com/files/img/default-movie.png')
                   ? Image.network(
                       'https://media.comicbook.com/files/img/default-movie.png',
-                      height: 210,
-                      width: 180,
+                      height: deviceHeight * 0.276,
+                      width: deviceWidth * 0.458,
                       fit: BoxFit.fitWidth,
                     )
                   : Image.network(
                       'http://image.tmdb.org/t/p/w500' + movies.imagePath,
-                      height: 210,
-                      width: 180,
+                      height: deviceHeight * 0.276,
+                      width: deviceWidth * 0.458,
                       fit: BoxFit.fitWidth,
                     ),
             ),
             SizedBox(
-              height: 8,
+              height: deviceHeight * 0.011,
             ),
             Container(
-              width: 180,
+              width: deviceWidth * 0.458,
               child: Text(
                 movies.title,
                 overflow: TextOverflow.ellipsis,
@@ -63,11 +65,12 @@ class GridItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 8,
+              height: deviceHeight * 0.011,
             ),
             Text(
               (movies.releaseDate == '') ? '' : forMatedDateTime,
-              style: GoogleFonts.openSans(color: Color(0xFF383942)),
+              style: GoogleFonts.openSans(
+                  color: Color(0xFF383942), fontSize: deviceHeight * 0.0185),
             )
           ],
         ),

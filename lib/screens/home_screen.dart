@@ -145,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: deviceHeight * 0.3433,
+                  height: deviceHeight * 0.3443,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: trendingMovies[index],
@@ -166,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: deviceHeight * 0.3433,
+                  height: deviceHeight * 0.3533,
                   margin: EdgeInsets.only(left: 8),
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
@@ -189,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: deviceHeight * 0.3433,
+                  height: deviceHeight * 0.3533,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: topRatedMovies[index],
@@ -211,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 8),
-                  height: deviceHeight * 0.3433,
+                  height: deviceHeight * 0.3533,
                   child: ListView.builder(
                     itemBuilder: (context, index) => MovieListItem(
                       trendingMovie: upComingMovies[index],
